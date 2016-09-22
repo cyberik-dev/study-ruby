@@ -12,7 +12,7 @@ class MegaGreeter
 			puts '...'
 		elsif @names.respond_to?('each')
 			# @names is a list of some kind
-			@names.each do |name|
+			self.names.each do |name|
 				puts "Hello #{name}!" 
 			end
 		else
