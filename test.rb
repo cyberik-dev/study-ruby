@@ -1,23 +1,69 @@
-basket    = {}
-sum       = 0
-final_sum = 0
+module Test
+  def fill
+    puts 'fill';
+  end
 
-loop do
-  puts 'Введите название товара или stop для выхода'
-  name = gets.chomp
-  break if name.downcase == 'stop'
-
-  puts 'Введите цену товара'
-  cost = gets.chomp.to_f
-
-  puts 'Введите количество товара'
-  count = gets.chomp.to_f
-
-  sum           = cost * count
-  basket[name.to_sym]  = { cost => count }
-  final_sum += sum
-
-  puts "Сумма за текущий товар = #{sum}"
-  puts "Хэш содержит #{basket}"
-  puts "Сумма за все покупки в корзине = #{final_sum}"
+  class B
+    def met_b
+      puts 'met_b'
+    end
+  end
 end
+
+class MegaGreeter
+  include Test
+
+  attr_accessor :names
+
+  # constructor
+  def initialize(names = 'World')
+    @names = names
+  end
+
+  # say hi
+  def say_hi
+    if @names.nil?
+      puts '...'
+    elsif @names.respond_to?('each')
+      # @names is a list of some kind
+      self.names.each do |name|
+        puts "Hello #{name}!" 
+      end
+    else
+      puts "Hello #{@names}!"
+    end
+  end
+
+  # say bay to everybody
+  def say_bye
+    if @names.nil?
+      puts "..."
+    elsif @names.respond_to?("join")
+      # join the list elements
+      puts "Goodbye #{@names.join(", ")}. Come back soon!"
+    else
+      puts "Goodbye #{@names}. Come back soon!"
+    end
+  end
+
+end
+
+mg = MegaGreeter.new
+mg.say_hi
+mg.say_bye
+
+mg.names = 'Vova'
+mg.say_hi
+mg.say_bye
+
+
+mg.names = ['Vasia', 'Kola', 'Marina', 'Viktor']
+mg.say_hi
+mg.say_bye
+
+mg.names = nil
+mg.say_hi
+mg.say_bye
+
+
+mg.fill
