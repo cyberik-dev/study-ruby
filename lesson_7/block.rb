@@ -2,13 +2,15 @@
 a = Proc.new { |x| x = x * 10; puts x }
 puts a.class
 
+# лучше использовать этот способ
 b = proc { |x| x = x * 10; puts x }
 puts b.class
 
 c = lambda { |x| x = x * 10; puts x }
 c.call(5)
 
-#->(x) { puts x } это то же самое, что и lambda { |x| puts x }, только короче
+# ->(x) { puts x } это то же самое, что и lambda { |x| puts x }, только короче
+# лучше использовать этот способ
 d = ->(x) { x = x * 10; puts x }
 d.call(10)
 

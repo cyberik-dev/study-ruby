@@ -21,7 +21,8 @@ class MegaGreeter
   end
 
   # say hi
-  def say_hi
+  def say_
+    hi
     if @names.nil?
       puts '...'
     elsif @names.respond_to?('each')
